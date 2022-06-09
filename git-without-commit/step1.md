@@ -2,24 +2,25 @@
 
 
 Alice wants to send a tree of files to Carol, via Bob. She wants to
-use Bob as the hub for the sharing of files.
+use Bob as the hub for the sharing of files. Pretend you are Alice.
 
-Pretend you are Alice. First get some files from github.
+
+First, Alice, get some files from github.
 
 `wget https://github.com/oreillymedia/katacoda-examples/archive/refs/heads/main.zip`{{execute}}
 
 
-Now unzip to get the files.
+Now unzip.
 
 `unzip main`{{execute}}
 
-You will use git to package, store and transport these files. So create a bare git repository.
+You will use git. So create a bare git repository.
 
 `git init --bare alice.git`{{execute}}
 
-A bare git repository has no working directory. It only has the git
-directory, which git uses to store objects, commits, references and
-other objects. Take a look.
+Why bare?  A bare git repository has only the git directory. That's
+enough to store files, trees, commits, references and other
+objects. Take a look at it
 
 `ls alice.git`{{execute}}
 
@@ -34,13 +35,13 @@ the git repository to use, and also the working directory.
 ```{{execute}}
 
 
-We're not going to do a `git commit`. Instead, first ask git to store
-the treee.
+We're not allowed to do a `git commit`. Instead, first ask git to
+store the treee.
 
 `git --git-dir=alice.git write-tree`{{execute}}
 
 
-Let's do the command again, but store the hash value.
+Repeat the command, to store the hash value.
 `HASH=$(git --git-dir=alice.git write-tree)`{{execute}}
 
 Here's that hash value again.
@@ -49,3 +50,10 @@ Here's that hash value again.
 Now use `git tag` instead of `git commit`. This creates a reference to the tree.
 
 `git --git-dir=alice.git tag alice-tree $HASH`{{execute}}
+
+We now have a tag.
+
+`git --git-dir=alice.git tag`{{execute}}
+
+Use the tag to access a file in the tree.
+`git --git-dir=alice.git cat-file -p alice-tree:new-scenario-template/finish.md`{{execute}}
