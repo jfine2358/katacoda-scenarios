@@ -11,7 +11,7 @@ Pretend you are Alice. First get some files from github.
 
 Now unzip to get the files.
 
-`unzip main`{{{execute}}}
+`unzip main`{{execute}}
 
 You will use git to package, store and transport these files. So create a bare git repository.
 
@@ -21,13 +21,18 @@ A bare git repository has no working directory. It only has the git
 directory, which git uses to store objects, commits, references and
 other objects. Take a look.
 
-`ls alice.git`{{{execute}}}
+`ls alice.git`{{execute}}
 
 
 We now execute a special git command.
 
-```git --git-dir=apple \
-    --work-tree=../texlive2022/texdir \
+```git --git-dir=alice.git \
+    --work-tree=./katacoda-examples-main \
     add \
-    texmf-dist/fonts/source/public/knuth-lib/
-```{{{execute}}}
+    new-scenario-template
+```{{execute}}
+
+`HASH=$(git --git-dir=apple write-tree`{{execute}}
+
+`echo $HASH`{{execute}}
+
