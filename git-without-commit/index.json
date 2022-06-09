@@ -1,8 +1,8 @@
 {
-  "title": "New Scenario Template",
-  "description": "A simple scenario example.",
-  "difficulty": "Beginner",
-  "time": "3 minutes",
+  "title": "Git without commit",
+  "description": "How to push and pull trees without first making a commit. A part of using git as a distributed content addressable store. Based on https://github.com/jfine2358/scratch/blob/y2022p008/alice-bob-carol.sh.",
+  "difficulty": "Intermediate",
+  "time": "15 minutes",
   "details": {
     "steps": [
       {
