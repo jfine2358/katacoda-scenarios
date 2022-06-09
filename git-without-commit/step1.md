@@ -24,7 +24,8 @@ other objects. Take a look.
 `ls alice.git`{{execute}}
 
 
-We now execute a special git command.
+Now save the tree to git. First we do a `git add`. We explicitly state
+the git repository to use, and also the working directory.
 
 ```git --git-dir=alice.git \
     --work-tree=./katacoda-examples-main \
@@ -32,7 +33,19 @@ We now execute a special git command.
     new-scenario-template
 ```{{execute}}
 
-`HASH=$(git --git-dir=apple write-tree`{{execute}}
 
+We're not going to do a `git commit`. Instead, first ask git to store
+the treee.
+
+`git --git-dir=alice.git write-tree`{{execute}}
+
+
+Let's do the command again, but store the hash value.
+`HASH=$(git --git-dir=alice.git write-tree)`{{execute}}
+
+Here's that hash value again.
 `echo $HASH`{{execute}}
 
+Now use `git tag` instead of `git commit`. This creates a reference to the tree.
+
+`git --git-dir=alice.git tag alice-tree $HASH`{{execute}}
